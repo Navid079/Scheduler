@@ -1,11 +1,13 @@
 from packages.utility.fileParser import parseFile, parseGanttFile
 from packages.algorithms.fcfs import fcfs
 
-processes, q1, q2 = parseFile('packages/test/test1.txt')
-fcfs1 = parseGanttFile('packages/test/fcfs1.txt')
+for i in range(1, 5):
+  processes, q1, q2 = parseFile(f'packages/test/inputs/test{i}.txt')
+  fcfs1 = parseGanttFile(f'packages/test/fcfs/fcfs{i}.txt')
 
-gantt = fcfs(processes)
-print('Expected:')
-print(fcfs1)
-print('Got:')
-print(gantt)
+  gantt = fcfs(processes)
+  print('Expected:')
+  print(fcfs1)
+  print('Got:')
+  print(gantt)
+  print('==============================')
