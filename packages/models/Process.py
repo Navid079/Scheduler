@@ -50,6 +50,9 @@ class Process:
   
   def getRemainingTime(self):
     return self.burstTime - self.runTime
+  
+  def getResponseRatio(self, time):
+    return 1 + (self.getWaitingTime(time) / self.burstTime)
 
   def stringify(self):
     return f'{self.label[1:]}, {self.startTime}, {self.burstTime}, {self.runTime}, {self.endTime}'
