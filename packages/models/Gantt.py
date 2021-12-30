@@ -6,6 +6,9 @@ class Gantt:
   def __init__(self):
     self.bursts = []
   
+  def __str__(self):
+    string = ''.join(self.bursts) + f'({self.time})'
+  
   def addBurst(self, process):
     if self.getLastBurst().process is process:
       return

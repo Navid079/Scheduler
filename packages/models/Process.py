@@ -11,6 +11,9 @@ class Process:
     self.startTime = startTime
     self.burstTime = burstTime
 
+  def __str__(self):
+    return self.label
+
   def initialize(self):
     self.runTime = 0
     self.endTime = -1
