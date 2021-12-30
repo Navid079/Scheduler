@@ -12,3 +12,4 @@ def printOutput(processes, algorithm, label, q1 = 0, q2 = 0):
   print(f'Average Turnaround Time:\t{avgTT}')
   print(f'Average Waiting Time:\t\t{avgWT}')
   print(f'Average Response Time:\t\t{avgRT}')
+  print('\n')

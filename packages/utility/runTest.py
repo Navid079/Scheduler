@@ -90,3 +90,4 @@ def runTest():
       print(f'Test#{i} failed')
       print(f'Expected:\n{expected}')
       print(f'Got:\n{got}')
+  print('\n')

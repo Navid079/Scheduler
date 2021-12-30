@@ -1,0 +1,46 @@
+CPU Scheduler
+=============
+By Navid
+Github: https://www.github.com/Navid079
+--------------------------------------------------------------------
+[ Manual ]
+
+This program is a cpu scheduler simulator.
+
+  Unfortunately, currently you can just see the result of scheduling
+based on a given process table. and also just some algorithms are s-
+upported.
+
+  To run the simulator, you can give the program your process table's
+file name(or path if it is not in the current-working-directory) and
+see the results.
+
+  Gantt Chart is shown as (<time>)[<process>](<time>)... . Processes 
+are named Px where x is their position in process table, starting fr-
+om 0. There is also an special process (H). This name is used for ti-
+mes that there is no ready process available and CPU is in HALT mode.
+
+  To create your own process table file, you should use this structu-
+re:
+
+---------------------------------------------------------------------
+|<processes count>                                                  |
+|<processes burst(service) time, seperated by comma                 |
+|<processes starting(arrival) time, seperated by comma              |
+|<quantum for Round-Robin - quantum for Q1 in MultiLevel Feedback Q |
+|<quantum for Q2 in MultiLevel Feedback Queue                       |
+---------------------------------------------------------------------
+for example:
+---------------------------------------------------------------------
+|4                                                                  |
+|5, 2, 7, 1                                                         |
+|2, 3, 8, 9                                                         |
+|1                                                                  |
+|3                                                                  |
+---------------------------------------------------------------------
+
+ - To run the above table, you can enter "manual-table" as file name.
+
+  There are also some test cases in the program, if you want to deve-
+lop this project, you can use them and also add more test cases!
+To run the test, enter "test" as file name.
