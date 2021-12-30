@@ -38,7 +38,7 @@ class Process:
     self.endTime = time
   
   def getWaitingTime(self, time):
-    time = min(time, self.endTime) if self.endTime > 0 else time
+    time = self.endTime if self.endTime > 0 else time
     return time - self.startTime - self.runTime
   
   def getTurnaroundTime(self):

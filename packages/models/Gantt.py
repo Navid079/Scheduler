@@ -21,3 +21,4 @@ class Gantt:
   
   def finishLastBurst(self):
     self.time += self.getLastBurst().runTillEnd()
+    self.getLastBurst().process.finish(self.time)
