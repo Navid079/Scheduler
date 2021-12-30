@@ -15,3 +15,6 @@ class Burst:
     time = self.process.runTillEnd()
     self.length += time
     return time
+  
+  def stringify(self):
+    return f'{self.process.stringfy()}, {self.startTime}, {self.length}'

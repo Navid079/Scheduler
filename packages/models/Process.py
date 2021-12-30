@@ -47,3 +47,6 @@ class Process:
   def getTurnaroundTime(self):
     if self.endTime < 0: return -1
     return self.endTime - self.startTime
+
+  def stringify(self):
+    return f'{self.label}, {self.startTime}, {self.burstTime}, {self.runTime}, {self.endTime}'

@@ -25,3 +25,9 @@ class Gantt:
   def finishLastBurst(self):
     self.time += self.getLastBurst().runTillEnd()
     self.getLastBurst().process.finish(self.time)
+
+  def saveToFile(self, fileName):
+    with open(fileName, 'w') as file:
+      file.write(f'{str(len(self.bursts))}\n')
+      for burst in self.bursts:
+        file.write(f'{burst.stringify()}\n')
