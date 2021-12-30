@@ -30,6 +30,14 @@ class Gantt:
     self.time += self.getLastBurst().runTillEnd()
     self.getLastBurst().process.finish(self.time)
 
+  def runQuantum(self, quantum):
+    process = self.getLastBurst().process
+    for i in range(quantum):
+      if process.isFinished():
+        return
+      self.getLastBurst().stepInto()
+      self.time += 1
+
   def saveToFile(self, fileName):
     with open(fileName, 'w') as file:
       file.write(f'{str(len(self.bursts))}\n')
