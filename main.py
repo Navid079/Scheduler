@@ -8,7 +8,8 @@ from packages.algorithms.mlfq import mlfq
 from packages.utility.printOutput import printOutput
 from packages.utility.runTest import runTest
 
-fileName = input('Enter file name:(input.txt)\n')
+print('Enter "help" for help and instructions')
+fileName = input('Enter file name:(input.txt) >')
 if fileName == 'test':
   runTest()
 elif fileName:

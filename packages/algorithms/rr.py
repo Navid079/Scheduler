@@ -14,9 +14,9 @@ def rr(processes, quantum):
     if process and not process.isFinished():
       readyQueue.append(process)
     processes = list(filter(lambda process: process not in readyQueue, processes))
-    process = readyQueue.pop(0)
+    process = readyQueue.pop(0) if readyQueue else None
     gantt.addBurst(process)
     gantt.runQuantum(quantum)
-    if process.isFinished():
+    if process and process.isFinished():
       process.finish(gantt.time)
   return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)

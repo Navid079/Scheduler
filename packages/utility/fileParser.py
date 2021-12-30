@@ -6,10 +6,10 @@ def parseFile(fileName):
   with open(fileName, 'r') as file:
     count = int(file.readline())
     labels = [f'P{i}' for i in range(count)]
-    startTimes = file.readline()
-    startTimes = parseList(startTimes)
     burstTimes = file.readline()
     burstTimes = parseList(burstTimes)
+    startTimes = file.readline()
+    startTimes = parseList(startTimes)
     q1 = int(file.readline())
     q2 = int(file.readline())
     processes = list(map(lambda data: Process(data[0], data[1], data[2]), zip(labels, startTimes, burstTimes)))

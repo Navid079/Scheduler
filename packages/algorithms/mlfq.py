@@ -8,7 +8,6 @@ def mlfq(processes, quantum1, quantum2):
   readyQueue1 = []
   readyQueue2 = []
   readyQueue3 = []
-  finished = []
   gantt = Gantt()
   while processes or readyQueue1 or readyQueue2 or readyQueue3:
     for process in processes:
@@ -34,4 +33,7 @@ def mlfq(processes, quantum1, quantum2):
       process = readyQueue3.pop(0)
       gantt.addBurst(process)
       gantt.finishLastBurst()
+    else:
+      gantt.addBurst(None)
+      gantt.stepInto()
   return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)

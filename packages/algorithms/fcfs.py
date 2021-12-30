@@ -11,7 +11,7 @@ def fcfs(processes):
     for process in processes:
       if process.startTime <= gantt.time: readyQueue.append(process)
     processes = list(filter(lambda process: process not in readyQueue, processes))
-    process = readyQueue.pop(0)
+    process = readyQueue.pop(0) if readyQueue else None
     gantt.addBurst(process)
     gantt.finishLastBurst()
   return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)

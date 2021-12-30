@@ -28,14 +28,17 @@ class Gantt:
   
   def finishLastBurst(self):
     self.time += self.getLastBurst().runTillEnd(self.time)
-    self.getLastBurst().process.finish(self.time)
+    if self.getLastBurst().process: self.getLastBurst().process.finish(self.time)
 
   def runQuantum(self, quantum):
-    process = self.getLastBurst().process
-    for _ in range(quantum):
-      if process.isFinished():
-        return
-      self.getLastBurst().stepInto(self.time)
+    process = self.getLastBurst().process if self.getLastBurst() else None
+    if process:
+      for _ in range(quantum):
+        if process.isFinished():
+          return
+        self.getLastBurst().stepInto(self.time)
+        self.time += 1
+    else:
       self.time += 1
 
   def saveToFile(self, fileName):

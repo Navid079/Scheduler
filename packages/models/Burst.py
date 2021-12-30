@@ -5,16 +5,18 @@ class Burst:
     self.length = 0
   
   def __str__(self):
-    return f'({self.startTime})[{str(self.process)}]'
+    label = str(self.process) if self.process else 'H'
+    return f'({self.startTime})[{label}]'
   
   def stepInto(self, time):
-    self.process.stepInto(time)
+    if self.process: self.process.stepInto(time)
     self.length += 1
 
   def runTillEnd(self, time):
-    time = self.process.runTillEnd(time)
+    time = self.process.runTillEnd(time) if self.process else 1
     self.length += time
     return time
   
   def stringify(self):
-    return f'{self.process.stringfy()}, {self.startTime}, {self.length}'
+    process = self.process.stringify() if self.process else '-1, -1, -1, -1, -1'
+    return f'{process}, {self.startTime}, {self.length}'

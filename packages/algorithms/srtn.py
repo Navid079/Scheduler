@@ -11,10 +11,10 @@ def srtn(processes):
     for process in processes:
       if process.startTime <= gantt.time: readyQueue.append(process)
     processes = list(filter(lambda process: process not in readyQueue, processes))
-    process = min(readyQueue, key = lambda p: p.getRemainingTime())
+    process = min(readyQueue, key = lambda p: p.getRemainingTime()) if readyQueue else None
     gantt.addBurst(process)
     gantt.stepInto()
-    if process.isFinished():
+    if process and process.isFinished():
       process.finish(gantt.time)
       readyQueue.remove(process)
   return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)
