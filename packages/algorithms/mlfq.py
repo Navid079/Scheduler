@@ -1,11 +1,14 @@
 from ..models.Gantt import Gantt
 from ..utility.processReset import processReset
+from ..utility.statistics import avgTurnaroundTime, avgWaitingTime, avgResponseTime
 
 def mlfq(processes, quantum1, quantum2):
   processes = processReset(processes)
+  backup = processes.copy()
   readyQueue1 = []
   readyQueue2 = []
   readyQueue3 = []
+  finished = []
   gantt = Gantt()
   while processes or readyQueue1 or readyQueue2 or readyQueue3:
     for process in processes:
@@ -31,4 +34,4 @@ def mlfq(processes, quantum1, quantum2):
       process = readyQueue3.pop(0)
       gantt.addBurst(process)
       gantt.finishLastBurst()
-  return gantt
+  return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)

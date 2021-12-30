@@ -4,6 +4,7 @@ class Process:
   startTime = 0
   burstTime = 0
   runTime = 0
+  responseTime = -1
   endTime = -1
 
   def __init__(self, label, startTime, burstTime):
@@ -17,6 +18,7 @@ class Process:
   def initialize(self):
     self.runTime = 0
     self.endTime = -1
+    self.responseTime = -1
 
   def setStartTime(self, time):
     self.startTime = time
@@ -29,10 +31,14 @@ class Process:
   def isFinished(self):
     return self.burstTime == self.runTime
   
-  def stepInto(self):
+  def stepInto(self, time):
+    if self.responseTime < 0:
+      self.responseTime = time - self.startTime
     self.runTime += 1
 
-  def runTillEnd(self):
+  def runTillEnd(self, time):
+    if self.responseTime < 0:
+      self.responseTime = time - self.startTime
     remainingTime = self.burstTime - self.runTime
     self.runTime = self.burstTime
     return remainingTime

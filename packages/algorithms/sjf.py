@@ -1,9 +1,10 @@
 from ..models.Gantt import Gantt
 from ..utility.processReset import processReset
-
+from ..utility.statistics import avgTurnaroundTime, avgWaitingTime, avgResponseTime
 
 def sjf(processes):
   processes = processReset(processes)
+  backup = processes.copy()
   readyQueue = []
   gantt = Gantt()
   while processes or readyQueue:
@@ -14,4 +15,4 @@ def sjf(processes):
     readyQueue.remove(process)
     gantt.addBurst(process)
     gantt.finishLastBurst()
-  return gantt
+  return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)

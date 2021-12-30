@@ -7,12 +7,12 @@ class Burst:
   def __str__(self):
     return f'({self.startTime})[{str(self.process)}]'
   
-  def stepInto(self):
-    self.process.stepInto()
+  def stepInto(self, time):
+    self.process.stepInto(time)
     self.length += 1
 
-  def runTillEnd(self):
-    time = self.process.runTillEnd()
+  def runTillEnd(self, time):
+    time = self.process.runTillEnd(time)
     self.length += time
     return time
   

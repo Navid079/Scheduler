@@ -1,10 +1,11 @@
 from ..models.Gantt import Gantt
 from ..utility.processReset import processReset
-
+from ..utility.statistics import avgTurnaroundTime, avgWaitingTime, avgResponseTime
 
 def hrrn(processes):
   processes = processReset(processes)
   readyQueue = []
+  backup = processes.copy()
   gantt = Gantt()
   while processes or readyQueue:
     for process in processes:
@@ -14,4 +15,4 @@ def hrrn(processes):
     readyQueue.remove(process)
     gantt.addBurst(process)
     gantt.finishLastBurst()
-  return gantt
+  return gantt, avgTurnaroundTime(backup), avgWaitingTime(backup), avgResponseTime(backup)
