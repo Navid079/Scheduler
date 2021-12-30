@@ -49,4 +49,4 @@ class Process:
     return self.endTime - self.startTime
 
   def stringify(self):
-    return f'{self.label}, {self.startTime}, {self.burstTime}, {self.runTime}, {self.endTime}'
+    return f'{self.label[1:]}, {self.startTime}, {self.burstTime}, {self.runTime}, {self.endTime}'

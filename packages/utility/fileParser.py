@@ -23,17 +23,18 @@ def parseGanttFile(fileName):
     bursts = []
     for string in burstStrings:
       label, startTime, burstTime, runTime, endTime, burstStartTime, burstLength = string
+      label = f'P{label}'
       process = Process(label, startTime, burstTime)
       process.runTime = runTime
       process.endTime = endTime
-      burst = Burst(process)
-      burst.startTime = burstStartTime
+      burst = Burst(process, burstStartTime)
       burst.length = burstLength
       bursts.append(burst)
     gantt = Gantt()
     gantt.time = time
     gantt.bursts = bursts
     return gantt
+
 def parseList(listString):
   listItem = listString.strip(',').strip(' ').strip(',').split(',')
   listItem = list(map(lambda item: int(item.strip(' ')), listItem))
